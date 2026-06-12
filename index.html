@@ -1,0 +1,388 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ajith Biju Portfolio</title>
+
+<style>
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:Arial, sans-serif;
+}
+
+html{
+    scroll-behavior:smooth;
+}
+
+body{
+    background:white;
+    color:#222;
+    line-height:1.6;
+}
+
+nav{
+    background:#0d6efd;
+    padding:15px;
+    text-align:center;
+    position:sticky;
+    top:0;
+}
+
+nav a{
+    color:white;
+    text-decoration:none;
+    margin:0 15px;
+    font-weight:bold;
+}
+
+nav a:hover{
+    text-decoration:underline;
+}
+
+header{
+    background:#f4f8ff;
+    text-align:center;
+    padding:60px 20px;
+}
+
+header h1{
+    font-size:40px;
+    color:#0d6efd;
+}
+
+header p{
+    margin-top:10px;
+    font-size:18px;
+}
+
+header img{
+    width:220px;
+    height:220px;
+    border-radius:50%;
+    margin-top:20px;
+    object-fit:cover;
+    border:5px solid #0d6efd;
+}
+
+video{
+    width:100%;
+    max-width:800px;
+    border-radius:10px;
+    box-shadow:0 2px 8px rgba(0,0,0,0.2);
+}
+
+.card{
+    padding:20px;
+    border-radius:10px;
+    background:white;
+    box-shadow:0 2px 5px rgba(0,0,0,0.1);
+    transition:0.3s;
+}
+.card:hover{
+    box-shadow:0 4px 15px rgba(0,0,0,0.3);
+}
+section{
+    padding:50px 20px;
+    max-width:1000px;
+    margin:auto;
+}
+
+h2{
+    color:#0d6efd;
+    margin-bottom:20px;
+    font-size:30px;
+}
+
+.card{
+
+    background:#f4f8ff;
+    padding:20px;
+    border-radius:10px;
+    margin-bottom:20px;
+}
+
+.project-img{
+
+    width:100%;
+    max-width:500px;
+    border-radius:10px;
+    margin-bottom:15px;
+}
+
+.skills span{
+
+    display:inline-block;
+    background:#0d6efd;
+    color:white;
+    padding:8px 15px;
+    border-radius:20px;
+    margin:5px;
+}
+
+/* TABLE */
+
+table{
+    width:100%;
+    border-collapse:collapse;
+    margin-top:20px;
+}
+
+table th, table td{
+    border:1px solid #ddd;
+    padding:12px;
+    text-align:left;
+}
+
+table th{
+    background:#0d6efd;
+    color:white;
+}
+
+a{
+    color:#0d6efd;
+    text-decoration:none;
+}
+
+a:hover{
+    text-decoration:underline;
+}
+
+
+footer{
+    background:#0d6efd;
+    color:white;
+    text-align:center;
+    padding:20px;
+    margin-top:30px;
+}
+
+</style>
+</head>
+
+<body>
+
+<nav>
+    <a href="#about">About</a>
+    <a href="#services">Services</a>
+    <a href="#projects">Projects</a>
+    <a href="#skills">Skills</a>
+    <a href="#education">Education</a>
+    <a href="#contact">Contact</a>
+</nav>
+
+<header>
+
+    <h1>Ajith Biju</h1>
+
+    <p>Electronics & Instrumentation Engineering Student</p>
+
+
+    <img src="assets/images/profile.jpeg" alt="Ajith Biju">
+
+</header>
+
+<section id="about">
+
+    <h2>About Me</h2>
+
+    <div class="card">
+
+        <p>
+            I am a BTech student in Electronics and Instrumentation Engineering at FISAT.
+            I am passionate about IoT, Robotics, AI, Home Automation and Embedded Systems.
+        </p>
+
+    </div>
+
+</section>
+
+<section id="services">
+
+    <h2>Services</h2>
+
+    <div class="card">
+
+        <h3>IoT & Automation</h3>
+
+        <p>
+            Building smart automation systems using ESP32 and Arduino.
+        </p>
+
+    </div>
+
+    <div class="card">
+
+        <h3>Embedded Development</h3>
+
+        <p>
+            Developing embedded projects using C++, Python and sensors.
+        </p>
+
+    </div>
+
+    <div class="card">
+
+        <h3>BMS Systems</h3>
+
+        <p>
+            Hands-on experience with Building Management Systems during internship.
+        </p>
+
+    </div>
+
+</section>
+
+<section id="projects">
+
+    <h2>Projects</h2>
+
+    <div class="card">
+
+<img src="assets/images/circuit.png" alt="ESP32 Project" class="project-img">
+
+        <h3>ESP32 IoT Light Automation System</h3>
+    <h2>demo video</h2>
+      <section id="demo">
+    <h2>Project Demo</h2>
+    <video controls width="100%">
+        <source src="assets/video/esp32.mp4" type="video/mp4">
+        Your browser does not support the video tag.
+    </video>
+</section>
+
+        <p>
+            Smart home automation system using ESP32 and Blynk app
+            to control appliances remotely.
+        </p>
+
+        <p>
+            <b>Technologies:</b> ESP32, Blynk, C++
+        </p>
+
+        <a href="https://github.com/ajith-biju" target="_blank">
+            View GitHub
+        </a>
+
+    </div>
+
+    <div class="card">
+
+        <h3>AI Based Metro Ticketing System</h3>
+
+        <p>
+            AI based smart metro ticketing concept for easier and faster booking.
+        </p>
+
+    </div>
+
+</section>
+
+<section id="skills">
+
+    <h2>Skills</h2>
+
+    <div class="skills">
+
+        <span>ESP32</span>
+        <span>Arduino</span>
+        <span>C++</span>
+        <span>Python</span>
+        <span>HTML</span>
+        <span>CSS</span>
+        <span>IoT</span>
+        <span>BMS</span>
+
+    </div>
+
+</section>
+
+<section id="education">
+
+    <h2>Education</h2>
+
+    <table>
+
+        <tr>
+            <th>Course</th>
+            <th>Institution</th>
+            <th>Score</th>
+            <th>Year</th>
+        </tr>
+
+        <tr>
+            <td>BTech EIE</td>
+            <td>FISAT</td>
+            <td>9.21 CGPA</td>
+            <td>2025 - 2029</td>
+        </tr>
+
+        <tr>
+            <td>Class 12</td>
+            <td>De Paul EMHSS</td>
+            <td>96.83%</td>
+            <td>2025</td>
+        </tr>
+
+        <tr>
+            <td>SSLC</td>
+            <td>SHEMS</td>
+            <td>89.8%</td>
+            <td>2023</td>
+        </tr>
+
+    </table>
+
+</section>
+
+<section id="contact">
+
+    <h2>Contact</h2>
+
+    <div class="card">
+
+        <p>
+            <b>Email:</b> 
+            <a href="mailto:bajith2006@gmail.com">
+                bajith2006@gmail.com
+            </a>
+        </p>
+
+        <p>
+            <b>Phone:</b> 
+            <a href="tel:+917907478185">
+                +91 7907478185
+            </a>
+        </p>
+
+        <p>
+            <b>GitHub:</b>
+
+            <a href="https://github.com/ajith-biju" target="_blank">
+                github.com/ajith-biju
+            </a>
+        </p>
+
+        <p>
+            <b>LinkedIn:</b>
+
+            <a href="https://linkedin.com/in/ajithbiju" target="_blank">
+                linkedin.com/in/ajithbiju
+            </a>
+        </p>
+
+    </div>
+
+</section>
+
+<footer>
+
+    <p>© 2026 Ajith Biju | Portfolio Website</p>
+
+</footer>
+
+</body>
+</html>
