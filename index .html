@@ -1,0 +1,636 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Portfolio of Ajith Biju — Electronics & Instrumentation Engineering student passionate about IoT, embedded systems, and smart automation.">
+  <meta name="author" content="Ajith Biju">
+  <meta name="keywords" content="Ajith Biju, ESP32, IoT, Embedded Systems, Electronics, Arduino, Blynk, Smart Automation">
+  <meta property="og:title" content="Ajith Biju — Portfolio">
+  <meta property="og:description" content="Electronics & Instrumentation Engineering student. ESP32, IoT, automation builder.">
+  <meta property="og:type" content="website">
+  <title>Ajith Biju | Portfolio</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+  <style>
+    /* ── TOKENS ─────────────────────────────────────────── */
+    :root {
+      --bg:        #0d0f14;
+      --surface:   #13161d;
+      --surface2:  #1a1e28;
+      --border:    #232839;
+      --accent:    #00e5a0;       /* circuit-green */
+      --accent2:   #4f8eff;       /* signal-blue */
+      --text:      #e8eaf0;
+      --muted:     #7a8099;
+      --heading:   #ffffff;
+      --font-body: 'Space Grotesk', sans-serif;
+      --font-mono: 'JetBrains Mono', monospace;
+      --radius:    10px;
+      --max-w:     820px;
+    }
+
+    /* ── RESET ──────────────────────────────────────────── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    /* ── BASE ───────────────────────────────────────────── */
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: var(--font-body);
+      font-size: 16px;
+      line-height: 1.7;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* ── LAYOUT ─────────────────────────────────────────── */
+    .container {
+      max-width: var(--max-w);
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+
+    /* ── SIGNATURE: dot-grid background ─────────────────── */
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background-image: radial-gradient(circle, #2a2f42 1px, transparent 1px);
+      background-size: 28px 28px;
+      opacity: 0.45;
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    /* all sections above the dot grid */
+    body > * { position: relative; z-index: 1; }
+
+    /* ── HEADER ─────────────────────────────────────────── */
+    header {
+      padding: 72px 0 56px;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .header-inner {
+      max-width: var(--max-w);
+      margin: 0 auto;
+      padding: 0 24px;
+      display: flex;
+      align-items: center;
+      gap: 36px;
+    }
+
+    .profile-pic {
+      width: 110px;
+      height: 110px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 2px solid var(--accent);
+      box-shadow: 0 0 0 6px rgba(0,229,160,0.08);
+      flex-shrink: 0;
+    }
+
+    .header-text h1 {
+      font-size: clamp(2rem, 5vw, 3rem);
+      font-weight: 700;
+      color: var(--heading);
+      letter-spacing: -0.02em;
+      line-height: 1.1;
+    }
+
+    .header-text h1 span {
+      color: var(--accent);
+    }
+
+    .header-sub {
+      margin-top: 8px;
+      color: var(--muted);
+      font-size: 0.95rem;
+    }
+
+    .header-badge {
+      display: inline-block;
+      margin-top: 10px;
+      background: var(--surface2);
+      border: 1px solid var(--border);
+      border-radius: 999px;
+      padding: 4px 14px;
+      font-size: 0.8rem;
+      font-family: var(--font-mono);
+      color: var(--accent2);
+      letter-spacing: 0.03em;
+    }
+
+    /* ── SECTIONS ───────────────────────────────────────── */
+    section {
+      padding: 52px 0;
+      border-bottom: 1px solid var(--border);
+    }
+
+    section:last-of-type {
+      border-bottom: none;
+    }
+
+    .section-label {
+      font-family: var(--font-mono);
+      font-size: 0.75rem;
+      color: var(--accent);
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      margin-bottom: 20px;
+    }
+
+    h2 {
+      font-size: 1.5rem;
+      font-weight: 600;
+      color: var(--heading);
+      margin-bottom: 20px;
+      letter-spacing: -0.01em;
+    }
+
+    p { color: var(--text); margin-bottom: 10px; }
+
+    a {
+      color: var(--accent);
+      text-decoration: none;
+      transition: opacity 0.15s;
+    }
+    a:hover { opacity: 0.75; }
+
+    /* ── CONTACT GRID ───────────────────────────────────── */
+    .contact-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 14px;
+    }
+
+    .contact-item {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 16px 18px;
+      font-size: 0.92rem;
+    }
+
+    .contact-item .label {
+      display: block;
+      font-family: var(--font-mono);
+      font-size: 0.7rem;
+      color: var(--muted);
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      margin-bottom: 4px;
+    }
+
+    .contact-links {
+      display: flex;
+      gap: 12px;
+      margin-top: 14px;
+    }
+
+    .btn-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: var(--surface2);
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      padding: 8px 16px;
+      font-size: 0.88rem;
+      color: var(--text);
+      transition: border-color 0.2s, color 0.2s;
+    }
+    .btn-link:hover {
+      border-color: var(--accent);
+      color: var(--accent);
+      opacity: 1;
+    }
+
+    /* ── ABOUT ──────────────────────────────────────────── */
+    .about-text {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-left: 3px solid var(--accent);
+      border-radius: var(--radius);
+      padding: 22px 24px;
+      color: var(--text);
+      font-size: 0.97rem;
+      line-height: 1.75;
+      margin-bottom: 0;
+    }
+
+    /* ── EDUCATION TABLE ────────────────────────────────── */
+    .edu-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.92rem;
+    }
+
+    .edu-table th {
+      text-align: left;
+      padding: 12px 16px;
+      background: var(--surface2);
+      color: var(--muted);
+      font-family: var(--font-mono);
+      font-size: 0.72rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .edu-table td {
+      padding: 14px 16px;
+      border-bottom: 1px solid var(--border);
+      color: var(--text);
+    }
+
+    .edu-table tbody tr:last-child td { border-bottom: none; }
+
+    .edu-table tbody tr:hover td {
+      background: var(--surface);
+    }
+
+    .score {
+      font-family: var(--font-mono);
+      color: var(--accent);
+      font-weight: 500;
+    }
+
+    /* ── SKILLS ─────────────────────────────────────────── */
+    .skills-grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      list-style: none;
+    }
+
+    .skills-grid li {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      padding: 8px 16px;
+      font-size: 0.88rem;
+      font-family: var(--font-mono);
+      color: var(--text);
+      transition: border-color 0.2s, color 0.2s;
+    }
+
+    .skills-grid li:hover {
+      border-color: var(--accent);
+      color: var(--accent);
+    }
+
+    /* ── PROJECTS ───────────────────────────────────────── */
+    .project-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 28px;
+      margin-bottom: 20px;
+      transition: border-color 0.2s;
+    }
+
+    .project-card:hover { border-color: var(--accent2); }
+
+    .project-card h3 {
+      font-size: 1.15rem;
+      font-weight: 600;
+      color: var(--heading);
+      margin-bottom: 10px;
+    }
+
+    .project-card p {
+      font-size: 0.93rem;
+      color: var(--muted);
+      margin-bottom: 18px;
+    }
+
+    .media-label {
+      font-family: var(--font-mono);
+      font-size: 0.72rem;
+      color: var(--muted);
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      margin: 18px 0 8px;
+    }
+
+    .project-card img,
+    .project-card video {
+      max-width: 100%;
+      border-radius: 8px;
+      border: 1px solid var(--border);
+      display: block;
+    }
+
+    .project-card audio {
+      width: 100%;
+      margin-top: 8px;
+    }
+
+    .github-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      margin-top: 16px;
+      background: var(--surface2);
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      padding: 8px 16px;
+      font-size: 0.88rem;
+      color: var(--text);
+      transition: border-color 0.2s, color 0.2s;
+    }
+    .github-link:hover {
+      border-color: var(--accent);
+      color: var(--accent);
+      opacity: 1;
+    }
+
+    /* ── LANGUAGES ──────────────────────────────────────── */
+    .lang-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .lang-list li {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-size: 0.93rem;
+    }
+
+    .lang-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: var(--accent);
+      flex-shrink: 0;
+    }
+
+    /* ── AUDIO ──────────────────────────────────────────── */
+    .audio-wrap {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 20px 24px;
+    }
+
+    .audio-wrap audio {
+      width: 100%;
+      margin-top: 8px;
+    }
+
+    /* ── FOOTER ─────────────────────────────────────────── */
+    footer {
+      padding: 32px 0;
+      border-top: 1px solid var(--border);
+    }
+
+    .footer-inner {
+      max-width: var(--max-w);
+      margin: 0 auto;
+      padding: 0 24px;
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      font-size: 0.85rem;
+      color: var(--muted);
+    }
+
+    .footer-inner a { color: var(--muted); }
+    .footer-inner a:hover { color: var(--accent); opacity: 1; }
+
+    /* ── RESPONSIVE ─────────────────────────────────────── */
+    @media (max-width: 600px) {
+      .header-inner {
+        flex-direction: column;
+        text-align: center;
+      }
+
+      .contact-links { justify-content: center; }
+
+      .edu-table th:nth-child(2),
+      .edu-table td:nth-child(2) { display: none; }
+    }
+
+    /* ── SCROLLBAR ──────────────────────────────────────── */
+    ::-webkit-scrollbar { width: 6px; }
+    ::-webkit-scrollbar-track { background: var(--bg); }
+    ::-webkit-scrollbar-thumb { background: var(--border); border-radius: 3px; }
+
+    /* ── SELECTION ──────────────────────────────────────── */
+    ::selection { background: rgba(0,229,160,0.2); color: var(--heading); }
+  </style>
+</head>
+
+<body>
+
+  <!-- ── HEADER ─────────────────────────────────────────── -->
+  <header>
+    <div class="header-inner">
+      <img
+        src="assets/images/profile.jpeg"
+        alt="Photo of Ajith Biju"
+        class="profile-pic"
+      >
+      <div class="header-text">
+        <h1>Ajith <span>Biju</span></h1>
+        <p class="header-sub">Electronics &amp; Instrumentation Engineering Student</p>
+        <span class="header-badge">FISAT Mookkannur · Batch 2025–2029</span>
+      </div>
+    </div>
+  </header>
+
+  <!-- ── CONTACT ────────────────────────────────────────── -->
+  <section>
+    <div class="container">
+      <p class="section-label">// contact</p>
+      <h2>Get in Touch</h2>
+      <div class="contact-grid">
+        <div class="contact-item">
+          <span class="label">Phone</span>
+          <a href="tel:+917907478185">📞 7907478185</a>
+        </div>
+        <div class="contact-item">
+          <span class="label">Email</span>
+          <a href="mailto:bajith2006@gmail.com">📧 bajith2006@gmail.com</a>
+        </div>
+        <div class="contact-item">
+          <span class="label">Location</span>
+          <span>📍 Karukutty, Ernakulam, Kerala</span>
+        </div>
+      </div>
+      <div class="contact-links">
+        <a href="https://github.com/ajith-biju" target="_blank" class="btn-link">⬡ GitHub</a>
+        <a href="https://www.linkedin.com/in/ajith-biju" target="_blank" class="btn-link">in LinkedIn</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── ABOUT ──────────────────────────────────────────── -->
+  <section>
+    <div class="container">
+      <p class="section-label">// about</p>
+      <h2>About Me</h2>
+      <p class="about-text">
+        Passionate and curious student with a strong interest in IoT, embedded systems, and smart automation.
+        I enjoy building practical projects using ESP32 and Arduino while learning new technologies and improving
+        my technical skills. Looking for opportunities to gain real-world experience, contribute to innovative
+        projects, and grow as a future electronics and software professional.
+      </p>
+    </div>
+  </section>
+
+  <!-- ── EDUCATION ──────────────────────────────────────── -->
+  <section>
+    <div class="container">
+      <p class="section-label">// education</p>
+      <h2>Education</h2>
+      <table class="edu-table">
+        <thead>
+          <tr>
+            <th>Course / Degree</th>
+            <th>Institution</th>
+            <th>Grade</th>
+            <th>Year</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>BTech — Electronics &amp; Instrumentation Engg.</td>
+            <td>FISAT, Mookkannur</td>
+            <td class="score">9.21 ⟡</td>
+            <td>2025–2029</td>
+          </tr>
+          <tr>
+            <td>Higher Secondary (Class 12)</td>
+            <td>De Paul EMHSS, Angamaly</td>
+            <td class="score">96.83%</td>
+            <td>2023–2025</td>
+          </tr>
+          <tr>
+            <td>Class 10</td>
+            <td>SHEMS, Mookkannur</td>
+            <td class="score">89.8%</td>
+            <td>2023</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <!-- ── SKILLS ─────────────────────────────────────────── -->
+  <section>
+    <div class="container">
+      <p class="section-label">// skills</p>
+      <h2>Skills</h2>
+      <ul class="skills-grid">
+        <li>Python</li>
+        <li>C++</li>
+        <li>HTML &amp; CSS</li>
+        <li>GitHub</li>
+        <li>Electrical Work</li>
+        <li>ESP32 / Arduino</li>
+        <li>IoT &amp; Automation</li>
+        <li>Blynk</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- ── PROJECTS ───────────────────────────────────────── -->
+  <section>
+    <div class="container">
+      <p class="section-label">// projects</p>
+      <h2>Projects</h2>
+
+      <div class="project-card">
+        <h3>ESP32 IoT Light Automation</h3>
+        <p>
+          Developed an IoT-based smart home automation system using an ESP32 microcontroller to control
+          electrical appliances remotely through the Blynk application and manual switches. Included relay
+          module integration for appliance control and fan speed regulation — combining wireless automation
+          with traditional manual operation for convenience and reliability.
+        </p>
+
+        <p class="media-label">Circuit Diagram</p>
+        <img
+          src="assets/images/circuit.png"
+          alt="ESP32 IoT Light Automation circuit diagram"
+        >
+
+        <p class="media-label">Demo Video</p>
+        <video controls>
+          <source src="assets/video/esp32.mp4" type="video/mp4">
+          Your browser does not support the video tag.
+          <track src="assets/video/esp32.mp3" kind="subtitles" srclang="en" label="English Subtitles" default>
+        </video>
+
+        <a href="https://github.com/ajith-biju" target="_blank" class="github-link">View on GitHub →</a>
+      </div>
+
+      <div class="project-card">
+        <h3>AI-Based Metro Ticketing Project</h3>
+        <p>An AI-powered metro ticketing system. (Details coming soon.)</p>
+        <img
+          src="assets/images/metro.jpg"
+          alt="AI-Based Metro Ticketing Project"
+        >
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ── LANGUAGES ──────────────────────────────────────── -->
+  <section>
+    <div class="container">
+      <p class="section-label">// languages</p>
+      <h2>Languages</h2>
+      <ul class="lang-list">
+        <li><span class="lang-dot"></span> Malayalam — Reading &amp; Writing</li>
+        <li><span class="lang-dot"></span> English — Reading &amp; Writing</li>
+        <li><span class="lang-dot"></span> Hindi — Reading &amp; Writing</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- ── VOICE INTRO ────────────────────────────────────── -->
+  <section>
+    <div class="container">
+      <p class="section-label">// voice</p>
+      <h2>Voice Introduction</h2>
+      <div class="audio-wrap">
+        <p style="font-size:0.88rem; color:var(--muted); margin-bottom:4px;">Listen to a brief introduction</p>
+        <audio controls>
+          <source src="intro-audio.mp3" type="audio/mpeg">
+          Your browser does not support the audio element.
+        </audio>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── FOOTER ─────────────────────────────────────────── -->
+  <footer>
+    <div class="footer-inner">
+      <span>© 2025 Ajith Biju</span>
+      <span>
+        <a href="mailto:bajith2006@gmail.com">bajith2006@gmail.com</a>
+        &nbsp;·&nbsp;
+        <a href="https://www.linkedin.com/in/ajith-biju" target="_blank">LinkedIn</a>
+        &nbsp;·&nbsp;
+        <a href="https://github.com/ajithbiju-611" target="_blank">GitHub</a>
+      </span>
+    </div>
+  </footer>
+
+</body>
+</html>
